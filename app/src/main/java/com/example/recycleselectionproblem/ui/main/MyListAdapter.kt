@@ -15,6 +15,14 @@ import com.example.recycleselectionproblem.R
 class MyListAdapter()
     : ListAdapter<MyModel, MyListAdapter.MyItemViewHolder>(DiffCallback()) {
 
+    init {
+        setHasStableIds(true)
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
     private var tracker: SelectionTracker<String>? = null
     fun setTracker(tracker: SelectionTracker<String>?) {
         this.tracker = tracker
